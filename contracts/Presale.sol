@@ -17,7 +17,7 @@ contract Presale is Context, Ownable {
     // Presale stuff below
     uint256 private _presaleMint;
     uint256 public presaleTime = now;
-    uint256 public presalePrice = 1;
+    uint256 public presalePrice = 100000000;
     mapping (address => uint256) private _presaleParticipation;
     bool public presale = true;
 

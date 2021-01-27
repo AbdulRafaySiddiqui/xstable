@@ -8,7 +8,7 @@ library Constants {
     uint256 private constant _launchSupply = 1 * 10**6 * 10**9;
     uint256 private constant _largeTotal = (MAX - (MAX % _launchSupply));
 
-    uint256 private constant _deployerCost = 5 ether;
+    uint256 private constant _deployerCost = 1 ether;
 
     uint256 private constant _baseExpansionFactor = 100;
     uint256 private constant _baseContractionFactor = 100;
