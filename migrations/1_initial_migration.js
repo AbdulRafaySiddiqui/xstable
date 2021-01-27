@@ -3,22 +3,21 @@ var xst = artifacts.require("XStable");
 var stabilizer = artifacts.require("Stabilizer");
 var presale = artifacts.require("Presale");
 
-module.exports = function (deployer) {
-  var xstContract, liquidityContract, stabilizerContract;
+module.exports = async (deployer) => {
+  await deployer.deploy(xst);
+  let xstContract = await xst.deployed();
 
-  deployer.deploy(xst).then(instance => {
-    xstContract = instance;
-    return deployer.deploy(liquidity, xstContract.address).then(instance => {
-      liquidityContract = instance;
-      return deployer.deploy(stabilizer).then(instance => {
-        stabilizerContract = instance;
-        return deployer.deploy(presale, xstContract.address).then(instance => {
-          xstContract.setLiquidityReserve(liquidityContract);
-          xstContract.setStabilizer(stabilizer);
-          xstContract.setPresale(instance);
-        });
-      });
-    });
-  });
+  await deployer.deploy(liquidity, xstContract.address);
+  let liquidityContract = await liquidity.deployed();
 
+  await deployer.deploy(stabilizer);
+  let stabilizerContract = await stabilizer.deployed();
+
+  await deployer.deploy(presale, xstContract.address);
+  let presaleContract = await presale.deployed();
+
+  await xstContract.initialize();
+  await xstContract.setPresale(presaleContract.address);
+  await xstContract.setStabilizer(stabilizerContract.address);
+  await xstContract.setLiquidityReserve(liquidityContract.address);
 };

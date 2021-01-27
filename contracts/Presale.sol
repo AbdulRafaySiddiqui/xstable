@@ -16,14 +16,14 @@ contract Presale is Context, Ownable {
     XStable token;
     // Presale stuff below
     uint256 private _presaleMint;
-    uint256 public presaleTime;
-    uint256 public presalePrice;
+    uint256 public presaleTime = now;
+    uint256 public presalePrice = 1;
     mapping (address => uint256) private _presaleParticipation;
-    bool public presale;
+    bool public presale = true;
 
     constructor (address tokenAdd) public {
         token = XStable(tokenAdd);
-        presaleTime = now + 5 minutes;
+        presaleTime;
     }
 
     function setPresaleTime(uint256 time) external onlyOwner() {
@@ -46,7 +46,7 @@ contract Presale is Context, Ownable {
     }
 
     // Presale function
-    function buyPresale() external payable {
+    receive() external payable {
         require(presale, "Presale is inactive");
         require(!token.isPresaleDone(), "Presale is already completed");
         require(presaleTime <= now, "Presale hasn't started yet");
