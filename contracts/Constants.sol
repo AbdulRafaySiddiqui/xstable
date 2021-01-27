@@ -28,7 +28,7 @@ library Constants {
     uint256 private constant _presaleCap = 1 * 10**5 * 10**9;
     uint256 private constant _maxPresaleGas = 200000000000;
 
-    uint256 private constant _epochLength = 4 hours;
+    uint256 private constant _epochLength = 4 minutes;
 
     uint256 private constant _liquidityReward = 25 * 10**9;
     uint256 private constant _minForLiquidity = 500 * 10**9;
@@ -36,8 +36,8 @@ library Constants {
 
     address private constant _routerAddress = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
     address private constant _factoryAddress = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
-    address payable private constant _deployerAddress = 0xCEe3101c0A8167f083F34B95A2f243c9b0BEF6a6;
-    address private constant _treasuryAddress = 0x3363Defd7447f14b7f696c0843AA96516Bc04808;
+    address payable private constant _deployerAddress = 0x48656596EF052DA66c93830E2eD5BB7785f3C752;
+    address private constant _treasuryAddress = 0x48656596EF052DA66c93830E2eD5BB7785f3C752;
 
     string private constant _name = "XSTABLE.PROTOCOL";
     string private constant _symbol = "XST";

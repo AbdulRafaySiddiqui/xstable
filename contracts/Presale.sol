@@ -23,7 +23,7 @@ contract Presale is Context, Ownable {
 
     constructor (address tokenAdd) public {
         token = XStable(tokenAdd);
-        presaleTime = 1611540000;
+        presaleTime = now + 5 minutes;
     }
 
     function setPresaleTime(uint256 time) external onlyOwner() {
